@@ -1,11 +1,11 @@
 import 'reflect-metadata';
-import '@shared/typeorm/index';
-import Routes from '@shared/routes';
-import AppError from '@shared/errors/AppError';
-import { errors } from 'celebrate';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
+import { errors } from 'celebrate';
+import '@shared/typeorm/index';
+import Routes from '@shared/routes';
+import AppError from '@shared/errors/AppError';
 
 const app = express();
 
