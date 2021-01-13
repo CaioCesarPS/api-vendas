@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
+import DeleteUserService from '../services/DeleteUserService';
 import ListUserService from '../services/ListUserService';
 import ShowUserService from '../services/ShowUserService';
 import UpdateUserService from '../services/UpdateUserService';
-import DeleteUserService from '../services/DeleteUserService';
 
 export default class UsersController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -17,7 +17,7 @@ export default class UsersController {
     const { id } = request.params;
 
     const showUser = new ShowUserService();
-    const user = showUser.execute({ id });
+    const user = await showUser.execute({ id });
 
     return response.json(user);
   }
