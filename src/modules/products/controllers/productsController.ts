@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import CreateProductService from '../services/createProductService';
-import deleteProductService from '../services/deleteProductService';
-import listProductService from '../services/listProductService';
-import showProductService from '../services/showProductService';
-import updateProductService from '../services/updateProductService';
+import CreateProductService from '../services/CreateProductService';
+import DeleteProductService from '../services/DeleteProductService';
+import ListProductService from '../services/ListProductService';
+import ShowProductService from '../services/ShowProductService';
+import UpdateProductService from '../services/UpdateProductService';
 export default class productsController {
   public async index(request: Request, response: Response): Promise<Response> {
-    const listProducts = new listProductService();
+    const listProducts = new ListProductService();
 
     const products = await listProducts.execute();
 
@@ -16,7 +16,7 @@ export default class productsController {
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    const showProduct = new showProductService();
+    const showProduct = new ShowProductService();
     const product = await showProduct.execute({ id });
 
     return response.json(product);
@@ -36,7 +36,7 @@ export default class productsController {
     const { name, price, quantity } = request.body;
     const { id } = request.params;
 
-    const updateProduct = new updateProductService();
+    const updateProduct = new UpdateProductService();
 
     const update = await updateProduct.execute({ id, name, price, quantity });
 
@@ -46,7 +46,7 @@ export default class productsController {
   public async delete(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    const deleteProduct = new deleteProductService();
+    const deleteProduct = new DeleteProductService();
 
     await deleteProduct.execute({ id });
 
