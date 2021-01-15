@@ -5,7 +5,7 @@ import {
   postBody,
   deleteValidID,
   putValidBodyAndID,
-} from './routesValidations/Validation';
+} from './routesValidations/userValidation';
 import UsersController from '../controllers/UsersController';
 
 const usersRouter = Router();
