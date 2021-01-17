@@ -4,7 +4,7 @@ import 'express-async-errors';
 import cors from 'cors';
 import { errors } from 'celebrate';
 import '@shared/typeorm/index';
-import Routes from '@shared/routes';
+import Routes from '@shared/http/routes/index';
 import { AppError } from '@shared/errors/AppError';
 
 const app = express();

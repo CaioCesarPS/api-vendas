@@ -34,8 +34,8 @@ class CreateSessionsService {
       throw new AppError('Password incorrect', 401);
     }
 
-    const userID = user.id;
-    const token = sign({ userID }, authConfig.jwt.secret, {
+    const token = sign({}, authConfig.jwt.secret, {
+      subject: user.id,
       expiresIn: authConfig.jwt.expiresIn,
     });
 
