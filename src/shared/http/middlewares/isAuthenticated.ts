@@ -6,7 +6,7 @@ import { verify } from 'jsonwebtoken';
 interface ITokenPayload {
   iat: number;
   exp: number;
-  userID: string;
+  sub: string;
 }
 
 export default function isAutenticated(
@@ -24,10 +24,10 @@ export default function isAutenticated(
   try {
     const decodedToken = verify(token, authConfig.jwt.secret);
 
-    const { userID } = decodedToken as ITokenPayload;
+    const { sub } = decodedToken as ITokenPayload;
 
     request.user = {
-      id: userID,
+      id: sub,
     };
 
     return next();

@@ -6,12 +6,14 @@ import { errors } from 'celebrate';
 import '@shared/typeorm/index';
 import Routes from '@shared/http/routes/index';
 import { AppError } from '@shared/errors/AppError';
+import uploadConfig from '@config/upload';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(Routes);
+app.use('/files', express.static(uploadConfig.directory));
 app.use(errors());
 app.use(
   (error: Error, request: Request, response: Response, next: NextFunction) => {
