@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
 import DeleteUserService from '../services/DeleteUserService';
 import ListUserService from '../services/ListUserService';
-import ShowUserService from '../services/ShowUserService';
+import showProfileService from '../services/ShowProfileService';
 import UpdateUserService from '../services/UpdateUserService';
 
 export default class UsersController {
@@ -11,15 +11,6 @@ export default class UsersController {
     const users = await listUser.execute();
 
     return response.json(users);
-  }
-
-  public async show(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
-
-    const showUser = new ShowUserService();
-    const user = await showUser.execute({ id });
-
-    return response.json(user);
   }
 
   public async create(request: Request, response: Response): Promise<Response> {

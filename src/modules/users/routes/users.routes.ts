@@ -21,7 +21,6 @@ const upload = multer(uploadConfig);
 
 usersRouter.get('/', isAuthenticated, usersController.index);
 usersRouter.post('/', celebrate(postBody), usersController.create);
-usersRouter.get('/:id', celebrate(getValidID), usersController.show);
 usersRouter.put('/:id', celebrate(putValidBodyAndID), usersController.update);
 usersRouter.delete('/:id', celebrate(deleteValidID), usersController.delete);
 usersRouter.patch(

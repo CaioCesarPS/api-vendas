@@ -1,4 +1,4 @@
-import { AppError } from '@shared/errors/AppError';
+import AppError from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
 import User from '@modules/users/typeorm/entities/User';
