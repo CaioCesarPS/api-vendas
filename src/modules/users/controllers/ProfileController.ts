@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import showProfileService from '@modules/users/services/ShowProfileService';
 import UpdateProfileUserService from '@modules/users/services/UpdateProfileService';
+import DeleteUserService from '../services/DeleteUserService';
 
 export default class UsersController {
   public async show(request: Request, response: Response): Promise<Response> {
@@ -26,5 +27,15 @@ export default class UsersController {
     });
 
     return response.json(update);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deleteUser = new DeleteUserService();
+
+    await deleteUser.execute({ id });
+
+    return response.json([]);
   }
 }
