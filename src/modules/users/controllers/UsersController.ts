@@ -2,9 +2,6 @@ import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
 import DeleteUserService from '../services/DeleteUserService';
 import ListUserService from '../services/ListUserService';
-import showProfileService from '../services/ShowProfileService';
-import UpdateUserService from '../services/UpdateUserService';
-
 export default class UsersController {
   public async index(request: Request, response: Response): Promise<Response> {
     const listUser = new ListUserService();
@@ -21,16 +18,6 @@ export default class UsersController {
     const user = await createUser.execute({ name, email, password });
 
     return response.json(user);
-  }
-
-  public async update(request: Request, response: Response): Promise<Response> {
-    const { name, email, password } = request.body;
-    const { id } = request.params;
-
-    const updateUser = new UpdateUserService();
-    const update = await updateUser.execute({ id, name, email, password });
-
-    return response.json(update);
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
