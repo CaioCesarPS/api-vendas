@@ -25,6 +25,21 @@ export const putValidBodyAndID = {
   },
 };
 
+export const EditProfileValidationBody = {
+  [Segments.BODY]: {
+    name: Joi.string().required(),
+    email: Joi.string().email().required(),
+    old_password: Joi.string(),
+    password: Joi.string().optional(),
+    password_confirmation: Joi.string()
+      .valid(Joi.ref('password'))
+      .when('password', {
+        is: Joi.exist(),
+        then: Joi.required(),
+      }),
+  },
+};
+
 export const deleteValidID = {
   [Segments.PARAMS]: {
     id: Joi.string().uuid().required(),

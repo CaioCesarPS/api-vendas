@@ -1,5 +1,5 @@
 import authConfig from '@config/auth';
-import { AppError } from '@shared/errors/AppError';
+import AppError from '@shared/errors/AppError';
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 

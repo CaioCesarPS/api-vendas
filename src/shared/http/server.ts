@@ -3,9 +3,9 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import { errors } from 'celebrate';
-import '@shared/typeorm/index';
 import Routes from '@shared/http/routes/index';
-import { AppError } from '@shared/errors/AppError';
+import AppError from '@shared/errors/AppError';
+import '@shared/typeorm';
 import uploadConfig from '@config/upload';
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(
         message: error.message,
       });
     }
-
+    console.log(error);
     return response.status(500).json({
       status: 'error',
       message: 'internal server error',
